@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Style Scrapbook/Order</title>
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+
+<!-- animate.css -->
+<link rel="stylesheet" href="assets/animate/animate.css" />
+<link rel="stylesheet" href="assets/animate/set.css" />
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<!--javascript-->
+<script type=text/javascript>
+function validate()
+{
+if(payment.fname.value=="")
+{
+    alert("Please Enter First Name")
+    return false
+}
+if(payment.lname.value=="")
+{
+    alert("Please Enter Last Name")
+    return false
+}
+if(payment.address.value=="")
+{
+    alert("Please Enter Shipping Address")
+    return false
+}
+if(isNaN(reg.no.value)&&reg.no.value<"999999999")
+{
+    alert("Please Enter Valid Contact No.")
+	return false
+}
+
+return true
+}
+
+</script>
+
+</head>
+<body background="images/paybk.jpg">
+<!-- jquery -->
+<script src="assets/jquery.js"></script>
+<!-- wow script -->
+<script src="assets/wow/wow.min.js"></script>
+<!-- boostrap -->
+<script src="assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+<!-- custom script -->
+<script src="assets/script.js"></script>
+
+<div class="topbar animated fadeInLeftBig"></div>
+<br>
+<!-- Header Starts -->
+<div>
+
+          <div class="container">
+            <div class="col-md-10">
+              <!-- Logo Starts -->
+              <a href="index.php"><img src="images/logotop.png" alt="logo"></a>
+            </div>  
+			  <!-- #Logo Ends -->
+            <div class="col-md-2">
+              <ul>
+                 <class="active"><a href="index.php">Home</a>                
+              </ul>
+            </div>
+            
+          </div>
+    </div>
+<!--#Header Ends-->
+<p>
+<p>
+<p>
+<!--Payment-->
+<div id="login" class="spacer">
+<div class="container contactform center">
+<br>
+<br>
+<br>
+<h2 class="text-center wowload fadeInUp">Please Fill Following Details</h2>
+  <div class="row wowload fadeInLeftBig">      
+      <div class="col-md-6 col-md-offset-3">
+        <form name="payment" method="post" Onsubmit="return validate()" action="success.html">      
+        <input type="text" name="fname" placeholder="First Name">
+		<input type="text" name="lname" placeholder="Last Name">
+		<textarea rows="5" name="address" placeholder="Shipping Address"></textarea>
+		<input type="numbers" name="no" placeholder="Contact">
+		<input type="text" value="Amount Payable : Rs.2500" readonly><br>
+		<select class="form-control" id="sel1">
+        <option>Mode of Payment</option>
+        <option>Cash on Delivery</option>
+        <option>Credit Card</option>
+        <option>Net Banking</option>
+      </select>
+	  <p>
+	  <p>
+        <button type="submit" name="submit" class="btn btn-primary" Onclick="validate()"></>Place Order</button>
+		
+		</form>
+		
+      </div>
+  </div>
+</div>
+</div>  
+<!--#Payment Ends-->
+
+<!-- Footer Starts -->
+<div class="footer text-center spacer">
+<p class="  flipInX"><a href="#"><i class="fa fa-facebook fa-2x"></i></a> <a href="#"><i class="fa fa-instagram fa-2x"></i></a> <a href="#"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-linkedin fa-2x"></i></a> </p>
+Copyright Style ScrapBook. All rights reserved.
+</div>
+<!--#Footer Ends-->
+</body>
+</html>
