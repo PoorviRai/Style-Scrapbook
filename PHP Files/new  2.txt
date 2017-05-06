@@ -1,0 +1,13 @@
+<?php
+session_start();
+$dbhost="localhost";
+$dbuser="root";
+$dbpass="";
+
+//connection with database server
+mysql_connect($dbhost,$dbuser,$dbpass) or die(mysql_error());
+
+//connection with database
+mysql_select_db("miniproject") or die(mysql_error());
+
+?>

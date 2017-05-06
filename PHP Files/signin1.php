@@ -1,0 +1,142 @@
+<?php
+session_start();
+$dbhost='localhost';
+$dbuser='root';
+$dbpass='';
+
+//connection with database server
+$conn= mysql_connect($dbhost,$dbuser,$dbpass);
+if(!$conn){
+die('could not connect'.mysql_error());
+}else
+{
+ "Connection to the server made";
+}
+
+//connection with database
+$selected = mysql_select_db("miniproject",$conn);
+
+
+//isset is used to manage the error of undefined index
+if(isset($_POST['submit'])){
+$Email=$_POST["Email"];
+$Password=$_POST["Password"];
+
+$result = mysql_query("SELECT * FROM sign_ups where Email='$Email' and Password='$Password'");
+$num=mysql_num_rows($result);
+if($num==1)
+ {
+	$row=mysql_fetch_assoc($result); 
+    $_SESSION['Email']=$Email;
+     
+      header ('Location:yourscraps.html');
+                                          	
+ }
+
+ else{
+	 header('Location:user.html');
+    }
+}
+mysql_close($conn);
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Style Scrapbook/Sign In</title>
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+
+<!-- animate.css -->
+<link rel="stylesheet" href="assets/animate/animate.css" />
+<link rel="stylesheet" href="assets/animate/set.css" />
+
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+<!--javascript-->
+<script type=text/javascript>
+function validate()
+{
+if(signin.Email.value=="")
+{
+    alert("Please Enter your Email address")
+    return false
+}
+if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(signin.Email.value))
+{
+    alert("Style Scrapbook Does Not Recognize this Email-ID")
+	return false
+}
+if(signin.Password.value=="")
+{
+    alert("Please Enter Password")
+    return false
+}
+return true
+}
+</script>
+</head>
+
+<body background="images/signinbk.jpg">
+<!-- jquery -->
+<script src="assets/jquery.js"></script>
+<!-- wow script -->
+<script src="assets/wow/wow.min.js"></script>
+<!-- boostrap -->
+<script src="assets/bootstrap/js/bootstrap.js" type="text/javascript" ></script>
+<!-- custom script -->
+<script src="assets/script.js"></script>
+
+<div class="topbar animated fadeInLeftBig"></div>
+<br>
+<!-- Header Starts -->
+<div>
+
+          <div class="container">
+            <div class="col-md-10">
+              <!-- Logo Starts -->
+              <a href="index.php"><img src="images/logotop.png" alt="logo"></a>
+            </div>  
+			  <!-- #Logo Ends -->
+            <div class="col-md-2">
+              <ul>
+                 <class="active"><a href="index.php">Home</a>                
+              </ul>
+            </div>
+            
+          </div>
+    </div>
+<!--#Header Ends-->
+
+<!--Login-->
+<div id="login" class="spacer">
+<div class="container contactform center">
+<br>
+<br>
+<br>
+<h2 class="text-center wowload fadeInUp">Sign-In to start your ScrapBook</h2>
+  <div class="row wowload fadeInLeftBig">      
+      <div class="col-md-6 col-md-offset-3">
+        <form name="signin" method="post" Onsubmit="return validate()" action="">      
+        <input type="text" name="Email" placeholder="Email-ID">
+        <input type="password" name="Password" placeholder="Password">
+        <button type="submit" name="submit" class="btn btn-primary" Onclick="validate()">Sign-In</button>
+		</form>
+		
+      </div>
+  </div>
+</div>
+</div>
+<!--#Login Ends-->
+
+<!-- Footer Starts -->
+<div class="footer text-center spacer">
+ <p class="  flipInX"><a href="#"><i class="fa fa-facebook fa-2x"></i></a> <a href="#"><i class="fa fa-instagram fa-2x"></i></a> <a href="#"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-linkedin fa-2x"></i></a> </p>
+ Copyright Style ScrapBook. All rights reserved.
+</div>
+<!--#Footer Ends-->
+
+</body>
+</html>
